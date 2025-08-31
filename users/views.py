@@ -1,11 +1,12 @@
-from rest_framework.viewsets import GenericViewSet
+from drf_spectacular.utils import extend_schema
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from drf_spectacular.utils import extend_schema
+from rest_framework.viewsets import GenericViewSet
 from rest_framework_simplejwt.tokens import RefreshToken
+
 from .mixins import UsersPermissionMixin
 from .models import User
-from .serializers import UserSerializer, LoginSerializer
+from .serializers import LoginSerializer, UserSerializer
 
 
 class UserViewSet(UsersPermissionMixin, GenericViewSet):

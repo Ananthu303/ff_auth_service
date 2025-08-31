@@ -1,9 +1,11 @@
 # Create your models here.
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin
-from .managers import UserManager
-from django.db import models
 import uuid
+
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.db import models
+
+from .managers import UserManager
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -13,8 +15,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["name"]
 
     objects = UserManager()
 
